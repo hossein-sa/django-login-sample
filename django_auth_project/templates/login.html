@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}Login Form{% endblock %}
+
+{% block content %}
+    <div class="wrapper">
+        <form method="POST" action="{% url 'login' %}">
+            {% csrf_token %}
+            <h1>ورود</h1>
+            <div class="input-box">
+                <input type="text" name="username" placeholder="نام کاربری" required>
+                <i class='bx bxs-user'></i>
+            </div>
+            <div class="input-box">
+                <input type="password" name="password" placeholder="رمز عبور" required>
+                <i class='bx bxs-lock-alt'></i>
+            </div>
+            <div class="remember-forgot">
+                <label><input type="checkbox" name="remember">مرا به خاطر بسپار</label>
+                <a href="{% url 'password_reset' %}">فراموشی رمز عبور</a>
+            </div>
+            <button type="submit" class="btn">ورود</button>
+            <div class="register-link">
+                <p>حساب کاربری ندارید؟ <a href="{% url 'register' %}">ثبت نام</a></p>
+            </div>
+        </form>
+    </div>
+{% endblock %}

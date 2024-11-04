@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}Website Title{% endblock %}</title>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <a href="{% url 'home' %}">خانه</a>
+    {% if user.is_authenticated %}
+      <a href="{% url 'logout' %}">خروج</a>
+    {% else %}
+      <a href="{% url 'login' %}">ورود</a>
+      <a href="{% url 'register' %}">ثبت نام</a>
+    {% endif %}
+  </nav>
+
+  <!-- Main Content Wrapper -->
+  <div class="main-content">
+    {% block content %}
+    <!-- Page-specific content will go here -->
+    {% endblock %}
+  </div>
+</body>
+</html>

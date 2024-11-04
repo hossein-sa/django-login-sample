@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}ثبت نام{% endblock %}
+
+{% block content %}
+<div class="wrapper">
+    <form method="POST" action="{% url 'register' %}">
+        {% csrf_token %}
+        <h1>ثبت نام</h1>
+        <div class="input-box">
+            <input type="text" name="username" placeholder="نام کاربری" required>
+            <i class='bx bxs-user'></i>
+        </div>
+        <div class="input-box">
+            <input type="email" name="email" placeholder="ایمیل" required>
+            <i class='bx bxs-envelope'></i>
+        </div>
+        <div class="input-box">
+            <input type="password" name="password1" placeholder="رمز عبور" required>
+            <i class='bx bxs-lock-alt'></i>
+        </div>
+        <div class="input-box">
+            <input type="password" name="password2" placeholder="تکرار رمز عبور" required>
+            <i class='bx bxs-lock-alt'></i>
+        </div>
+        <button type="submit" class="btn">ثبت نام</button>
+        <div class="register-link">
+            <p>قبلا ثبت نام کرده‌اید؟ <a href="{% url 'login' %}">ورود</a></p>
+        </div>
+    </form>
+</div>
+{% endblock %}
